@@ -8,6 +8,11 @@ security:
     password: user
 
 spring:
+  activemq:
+    #broker-url: tcp://localhost:61616
+    broker-url: ws://localhost:61614
+    user: admin
+    password: secret
   jpa:
     hibernate:
       ddl-auto: update
