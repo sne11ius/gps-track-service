@@ -8,6 +8,8 @@ security:
     password: user
 
 spring:
+  profiles:
+    active: dev
   jpa:
     hibernate:
       ddl-auto: update

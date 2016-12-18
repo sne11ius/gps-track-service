@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GpsTrackerService {
 
 	public static void main(final String[] args) throws Exception {
-        SpringApplication.run(GpsTrackerService.class, args);
-    }
+		SpringApplication.run(GpsTrackerService.class, args);
+	}
 
 }
