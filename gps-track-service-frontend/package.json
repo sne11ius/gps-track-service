@@ -1,0 +1,17 @@
+{
+  "name": "gps-track-service-frontend",
+  "version": "0.0.1-SNAPSHOT",
+  "description": "Frontend for gps-track-service",
+  "repository": "https://github.com/sne11ius/gps-track-service.git",
+  "main": "./app",
+  "scripts": {
+    "build": "webpack -p"
+  },
+  "author": "cornelius.lilge@gmail.com",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "html-webpack-plugin": "^2.24.1",
+    "webpack": "1.14.0",
+    "webpack-dev-server": "1.16.2"
+  }
+}
