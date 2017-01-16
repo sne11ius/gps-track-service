@@ -20,6 +20,7 @@ public class HelloWorldBean implements CommandLineRunner {
 		LOG.debug("Hello from " + configValue);
 	}
 
+	@Override
 	public void run(final String... args) throws Exception {
 		LOG.debug("Hello again from " + configValue);
 	}

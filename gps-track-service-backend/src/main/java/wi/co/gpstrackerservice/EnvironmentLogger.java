@@ -14,6 +14,7 @@ public class EnvironmentLogger implements ApplicationListener<ContextRefreshedEv
 	@Value("${spring.profiles.active}")
 	protected String springProfilesActive;
 
+	@Override
 	public void onApplicationEvent(final ContextRefreshedEvent event) {
 		LOG.info("=======================================");
 		LOG.info("Running with active profiles: {}", springProfilesActive);
