@@ -1,6 +1,7 @@
-var greeter = require('./greeter');
+import Greeter from './Greeter';
+import fetch from 'isomorphic-fetch';
 
-var greeting = greeter.greet('asd');
+var greeting = new Greeter().greet('asd');
 
 if (typeof document !== 'undefined') {
   var apiEndpoint = '/api/greetings'

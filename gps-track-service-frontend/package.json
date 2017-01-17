@@ -9,9 +9,22 @@
   },
   "author": "cornelius.lilge@gmail.com",
   "license": "GPL-3.0",
+  "dependencies": {
+    "babel-polyfill": "6.20.0",
+    "isomorphic-fetch": "2.2.0"
+  },
   "devDependencies": {
-    "html-webpack-plugin": "^2.24.1",
+    "babel-cli": "6.18.0",
+    "babel-core": "6.21.0",
+    "babel-loader": "6.2.10",
+    "babel-preset-es2015": "6.18.0",
+    "babel-preset-es2016": "6.16.0",
+    "eslint": "2.0.0",
+    "ts-loader": "1.3.1",
+    "typescript": "2.1.4",
+    "html-webpack-plugin": "2.24.1",
     "webpack": "1.14.0",
+    "webpack-fail-plugin": "1.0.5",
     "webpack-dev-server": "1.16.2"
   }
 }
