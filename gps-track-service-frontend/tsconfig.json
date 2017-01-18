@@ -1,19 +1,44 @@
 {
-  "compilerOptions": {
-    "removeComments": false,
-    "lib": [
-      "dom",
-      "es2015",
-      "es2016"
+    "version": "1.7.5",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "experimentalDecorators": true
+    },
+    "formatCodeOptions": {
+        "indentSize": 2,
+        "tabSize": 2,
+        "newLineCharacter": "\r\n",
+        "convertTabsToSpaces": true,
+        "insertSpaceAfterCommaDelimiter": true,
+        "insertSpaceAfterSemicolonInForStatements": true,
+        "insertSpaceBeforeAndAfterBinaryOperators": true,
+        "insertSpaceAfterKeywordsInControlFlowStatements": true,
+        "insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+        "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+        "placeOpenBraceOnNewLineForFunctions": true,
+        "placeOpenBraceOnNewLineForControlBlocks": true
+    },
+    "compileOnSave": false,
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
     ],
-    "target": "es2016",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "noImplicitAny": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "preserveConstEnums": true,
-    "sourceMap": true,
-    "skipLibCheck": true
-  }
+    "files": [
+        "./src/App.ts",
+        "./src/components/Hello.ts",
+        "./src/main.ts",
+        "./typings/node/node.d.ts",
+        "./typings/tsd.d.ts",
+        "./typings/vue/vue.d.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
 }
