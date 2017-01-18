@@ -12,11 +12,7 @@ const PATHS = {
 
 module.exports = {
   entry: {
-    main: './app/index.ts',
-    vendor: [
-      'babel-polyfill',
-      'events'
-    ]
+    main: './app/index.ts'
   },
   output: {
     path: PATHS.build,
