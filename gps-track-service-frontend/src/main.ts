@@ -1,11 +1,10 @@
-/// <reference path='../typings/tsd.d.ts' />
+declare var require: any
 
-import Vue = require('vue')
-var VueResource = require('vue-resource');
-Vue.use(VueResource);
-import App from './App'
+var Vue = require('vue')
+var App = require('./App.vue').default
 
+/* eslint-disable no-new */
 new Vue({
-  el: 'body',
-  components: { App }
+  el: '#app',
+  render: h => h(App)
 })
