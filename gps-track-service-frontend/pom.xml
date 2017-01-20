@@ -57,6 +57,17 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<!-- Dont run inherited generator plugin -->
+				<groupId>wi.co</groupId>
+				<artifactId>spring-web-to-typescript-generator-maven-plugin</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<phase>none</phase>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>

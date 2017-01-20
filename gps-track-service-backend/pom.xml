@@ -61,11 +61,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!--dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency-->
 	</dependencies>
 	<build>
 		<resources>
@@ -144,6 +139,17 @@
 							<goal>deploy</goal>
 						</goals>
 						<phase>deploy</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<!-- Dont run inherited generator plugin -->
+				<groupId>wi.co</groupId>
+				<artifactId>spring-web-to-typescript-generator-maven-plugin</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<phase>none</phase>
 					</execution>
 				</executions>
 			</plugin>
