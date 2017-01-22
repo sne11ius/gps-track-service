@@ -20,12 +20,13 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['', '.js', '.ts', '.vue', '.json'],
+    extensions: ['', '.js', '.ts', '.generated.ts', '.vue', '.json'],
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      'components': path.resolve(__dirname, '../src/components'),
+      'generated': path.resolve(__dirname, '../src-generated')
     }
   },
   resolveLoader: {

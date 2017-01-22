@@ -16,8 +16,8 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>gps-track-service-frontend</module>
 		<module>gps-track-service-backend</module>
+		<module>gps-track-service-frontend</module>
 	</modules>
 
 	<properties>
@@ -53,57 +53,7 @@
 						</execution>
 					</executions>
 				</plugin>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>wi.co</groupId>
-										<artifactId>
-											spring-web-to-typescript-generator-maven-plugin
-										</artifactId>
-										<versionRange>
-											[0.0.1-SNAPSHOT,)
-										</versionRange>
-										<goals>
-											<goal>
-												generate-typescript-bindings
-											</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute></execute>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
 			</plugins>
 		</pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>wi.co</groupId>
-				<artifactId>spring-web-to-typescript-generator-maven-plugin</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
-				<configuration>
-					<source>gps-track-service-backend/src/main/java</source>
-					<target>gps-track-service-frontend/src-generated</target>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>generate-typescript-bindings</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
 	</build>
 </project>

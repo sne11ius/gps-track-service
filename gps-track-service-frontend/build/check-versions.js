@@ -24,10 +24,12 @@ module.exports = function () {
   for (var i = 0; i < versionRequirements.length; i++) {
     var mod = versionRequirements[i]
     if (!semver.satisfies(mod.currentVersion, mod.versionRequirement)) {
-      warnings.push(mod.name + ': ' +
-        chalk.red(mod.currentVersion) + ' should be ' +
-        chalk.green(mod.versionRequirement)
-      )
+      if (mod.name != 'node') {
+        warnings.push(mod.name + ': ' +
+          chalk.red(mod.currentVersion) + ' should be ' +
+          chalk.green(mod.versionRequirement)
+        )
+      }
     }
   }
 

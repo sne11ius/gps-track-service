@@ -1,14 +1,18 @@
 package wi.co.gpstrackerservice.domain;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
+import org.leandreck.endpoints.annotations.TypeScriptType;
+
+@TypeScriptType
 public class Greeting {
+
 	private final String content;
-	private final LocalDateTime time;
+	private final Date time;
 
 	public Greeting(final String content) {
 		this.content = content;
-		this.time = LocalDateTime.now();
+		this.time = new Date();
 	}
 
 	public String getContent() {
@@ -18,4 +22,5 @@ public class Greeting {
 	public String getTime() {
 		return this.time.toString();
 	}
+
 }

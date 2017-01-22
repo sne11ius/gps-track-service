@@ -4,7 +4,7 @@ import static java.lang.String.format;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
-import org.springframework.stereotype.Controller;
+import org.leandreck.endpoints.annotations.TypeScriptEndpoint;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import wi.co.gpstrackerservice.domain.Greeting;
 
+@TypeScriptEndpoint
 @RestController
-@Controller
 @RequestMapping("/api/greetings")
 public class GreeterController {
 

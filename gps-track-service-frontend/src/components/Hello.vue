@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import * as GreeterController from '../../src-generated/greetercontroller.generated'
 
 export default {
   msg: 'hello',
@@ -15,10 +15,8 @@ export default {
     }
   },
   mounted () {
-    var apiEndpoint = '/api/greetings'
-    var url = apiEndpoint + '/webpack'
-    axios.get(url).then(response => {
-      this.msg = response.data.time + ' - Server said: ' + response.data.content
+    new GreeterController().greetNameGet('my custom name').then(greeting => {
+      this.msg = greeting.time + ' - Server said: ' + greeting.content
     })
   }
 }
