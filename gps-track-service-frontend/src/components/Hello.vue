@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import * as GreeterController from '../../src-generated/greetercontroller.generated'
+import { GreeterController } from 'generated'
 
 export default {
   msg: 'hello',
@@ -15,9 +15,14 @@ export default {
     }
   },
   mounted () {
-    new GreeterController().greetNameGet('my custom name').then(greeting => {
-      this.msg = greeting.time + ' - Server said: ' + greeting.content
-    })
+    new GreeterController()
+      .greetNameGet('my custom name')
+      .then(greeting => {
+        this.msg = greeting.time + ' - Server said: ' + greeting.content
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 }
 </script>

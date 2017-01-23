@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class GpsTrackerService {
 
-	public static void main(final String[] args) throws Exception {
+	public static void main(final String[] args) {
 		SpringApplication.run(GpsTrackerService.class, args);
 	}
 

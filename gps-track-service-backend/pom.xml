@@ -59,9 +59,11 @@
 		<dependency>
 			<groupId>org.leandreck.endpoints</groupId>
 			<artifactId>annotations</artifactId>
-			<scope>provided</scope> <!-- the annotations and processor are only needed at compile time -->
-			<optional>true</optional> <!-- they need not to be transitively included in dependent artifacts -->
+			<!-- they need not to be transitively included in dependent artifacts -->
 			<version>0.0.9</version>
+			<scope>provided</scope>
+			<!-- the annotations and processor are only needed at compile time -->
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 	<build>
@@ -150,11 +152,10 @@
 				<executions>
 					<execution>
 						<id>copy-resources</id>
-						<!-- here the phase you need -->
-						<phase>process-classes</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
+						<phase>process-classes</phase>
 						<configuration>
 							<outputDirectory>${basedir}/../gps-track-service-frontend/src-generated</outputDirectory>
 							<resources>
