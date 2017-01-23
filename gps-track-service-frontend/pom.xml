@@ -11,7 +11,8 @@
 
 	<artifactId>gps-track-service-frontend</artifactId>
 
-	<dependencies></dependencies>
+	<dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>

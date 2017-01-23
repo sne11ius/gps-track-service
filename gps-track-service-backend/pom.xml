@@ -14,11 +14,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>gps-track-service-frontend</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
@@ -61,11 +56,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!--dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
+		<dependency>
+			<groupId>org.leandreck.endpoints</groupId>
+			<artifactId>annotations</artifactId>
+			<!-- they need not to be transitively included in dependent artifacts -->
+			<version>0.0.9</version>
 			<scope>provided</scope>
-		</dependency-->
+			<!-- the annotations and processor are only needed at compile time -->
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 	<build>
 		<resources>
@@ -144,6 +143,28 @@
 							<goal>deploy</goal>
 						</goals>
 						<phase>deploy</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<phase>process-classes</phase>
+						<configuration>
+							<outputDirectory>${basedir}/../gps-track-service-frontend/src-generated</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/target/generated-sources/annotations</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

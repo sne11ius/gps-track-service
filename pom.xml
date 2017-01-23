@@ -16,8 +16,8 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>gps-track-service-frontend</module>
 		<module>gps-track-service-backend</module>
+		<module>gps-track-service-frontend</module>
 	</modules>
 
 	<properties>
