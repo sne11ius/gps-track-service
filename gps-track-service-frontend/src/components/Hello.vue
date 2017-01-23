@@ -1,6 +1,18 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <md-dialog md-open-from="#custom" md-close-to="#custom" ref="dialog1">
+      <md-dialog-title>Some dialog title</md-dialog-title>
+
+      <md-dialog-content>&hellip; and some dialog content</md-dialog-content>
+
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="closeDialog('dialog1')">Cancel</md-button>
+        <md-button class="md-primary" @click="closeDialog('dialog1')">Ok</md-button>
+      </md-dialog-actions>
+    </md-dialog>
+    <md-button class="md-raised" @click="openDialog('dialog1')">Open Dialog</md-button>
+    <md-button class="md-raised" @click="refreshMessage">Refresh Message</md-button>
   </div>
 </template>
 
@@ -14,15 +26,26 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
+  methods: {
+    openDialog (ref) {
+      this.$refs[ref].open()
+    },
+    closeDialog (ref) {
+      this.$refs[ref].close()
+    },
+    refreshMessage () {
+      new GreeterController()
+        .greetNameGet('my custom name')
+        .then(greeting => {
+          this.msg = greeting.time + ' - Server said: ' + greeting.content
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+  },
   mounted () {
-    new GreeterController()
-      .greetNameGet('my custom name')
-      .then(greeting => {
-        this.msg = greeting.time + ' - Server said: ' + greeting.content
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    this.refreshMessage()
   }
 }
 </script>

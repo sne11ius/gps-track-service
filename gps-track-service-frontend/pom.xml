@@ -12,11 +12,6 @@
 	<artifactId>gps-track-service-frontend</artifactId>
 
 	<dependencies>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>gps-track-service-backend</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 	</dependencies>
 
 	<build>
