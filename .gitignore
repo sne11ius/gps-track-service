@@ -6,3 +6,5 @@ npm-debug.log
 .settings
 .vscode
 target
+gps-track-service-frontend/dist
+gps-track-service-frontend/src-generated
