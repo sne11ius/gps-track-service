@@ -40,6 +40,22 @@ export class ${serviceName} {
 
 </#list>
 
+  /* POST */
+<#list getPostMethods() as method>
+  <#assign expandedURL = method.url?replace('{', '\' + ')>
+  <#assign expandedURL = expandedURL?replace('}', ' + \'')>
+  public ${method.name}Post(<#list method.pathVariableTypes as variable>${variable.fieldName}: ${variable.type}<#sep>, </#sep></#list><#if method.pathVariableTypes?size gt 0>, </#if>${method.requestBodyType.fieldName}: ${method.requestBodyType.type}): Promise<${method.returnType.type}> {
+    let url = this.serviceBaseURL + '${expandedURL}';
+    return axios.post(url, ${method.requestBodyType.fieldName}).then(function (response) {
+        resolve(<${method.returnType.type}>response.data);
+      })
+      .catch(function (error) {
+        reject(error);
+      });
+  }
+
+</#list>
+
   /* HEAD */
 <#list getHeadMethods() as method>
   <#assign expandedURL = method.url?replace('{', '\' + ')>
@@ -51,31 +67,6 @@ export class ${serviceName} {
   }
 
 </#list>
-<#if getHeadMethods()?size gt 0>
-  private httpHead(url: string): Promise<Response> {
-    console.info('httpHead: ' + url);
-    return axios.head(url);
-  }
-</#if>
-
-  /* POST */
-<#list getPostMethods() as method>
-  <#assign expandedURL = method.url?replace('{', '\' + ')>
-  <#assign expandedURL = expandedURL?replace('}', ' + \'')>
-  public ${method.name}Post(<#list method.pathVariableTypes as variable>${variable.fieldName}: ${variable.type}<#sep>, </#sep></#list><#if method.pathVariableTypes?size gt 0>, </#if>${method.requestBodyType.fieldName}: ${method.requestBodyType.type}): Promise<${method.returnType.type}> {
-    let url = this.serviceBaseURL + '${expandedURL}';
-    return axiosPost(url, ${method.requestBodyType.fieldName})
-      .map((response: Response) => <${method.returnType.type}>response.json())
-      .catch((error: Response) => this.handleError(error));
-  }
-
-</#list>
-<#if getPostMethods()?size gt 0>
-  private httpPost(url: string, body: any): Promise<Response> {
-    console.info('httpPost: ' + url);
-    return axios.post(url, body);
-  }
-</#if>
 
   /* PUT */
 <#list getPutMethods() as method>
@@ -89,12 +80,6 @@ export class ${serviceName} {
   }
 
 </#list>
-<#if getPutMethods()?size gt 0>
-  private httpPut(url: string, body: any): Promise<Response> {
-    console.info('httpPut: ' + url);
-    return axios.put(url, body);
-  }
-</#if>
 
   /* PATCH */
 <#list getPatchMethods() as method>
@@ -108,12 +93,6 @@ export class ${serviceName} {
   }
 
 </#list>
-<#if getPatchMethods()?size gt 0>
-  private httpPatch(url: string, body: any): Promise<Response> {
-    console.info('httpPatch: ' + url);
-    return axios.patch(url, body);
-  }
-</#if>
 
   /* DELETE */
 <#list getDeleteMethods() as method>
@@ -126,12 +105,6 @@ export class ${serviceName} {
   }
 
 </#list>
-<#if getDeleteMethods()?size gt 0>
-  private httpDelete(url: string): Promise<Response> {
-    console.info('httpDelete: ' + url);
-    return axios.delete(url);
-  }
-</#if>
 
   /* OPTIONS */
 <#list getOptionsMethods() as method>
@@ -144,12 +117,6 @@ export class ${serviceName} {
   }
 
 </#list>
-<#if getOptionsMethods()?size gt 0>
-  private httpOptions(url: string, body: any): Promise<Response> {
-    console.info('httpOptions: ' + url);
-    return axios.options(url, body);
-  }
-</#if>
 
   /* TRACE */
 <#list getTraceMethods() as method>
@@ -163,11 +130,5 @@ export class ${serviceName} {
   }
 
 </#list>
-<#if getTraceMethods()?size gt 0>
-  private httpTrace(url: string, body: any): Promise<Response> {
-    console.info('httpTrace: ' + url);
-    return axios.trace(url, body);
-  }
-</#if>
 
 }
