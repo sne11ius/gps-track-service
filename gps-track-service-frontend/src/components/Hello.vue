@@ -20,7 +20,6 @@
 import { GreeterController } from 'generated'
 
 export default {
-  msg: 'hello',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -35,7 +34,7 @@ export default {
     },
     refreshMessage () {
       new GreeterController()
-        .greetNameGet('my custom name')
+        .greetName('my custom name')
         .then(greeting => {
           this.msg = greeting.time + ' - Server said: ' + greeting.content
         })

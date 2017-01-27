@@ -1,11 +1,15 @@
 package wi.co.gpstrackerservice.user.boundary;
 
-import static org.springframework.http.MediaType.*;
-import static org.springframework.web.bind.annotation.RequestMethod.*;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+
 import javax.validation.Valid;
+
 import org.leandreck.endpoints.annotations.TypeScriptEndpoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import wi.co.gpstrackerservice.user.entity.User;
 import wi.co.gpstrackerservice.user.entity.Users;
 
@@ -37,9 +42,9 @@ public class UserRestService {
 		return users.save(user);
 	}
 
-	@RequestMapping(method = DELETE, value = "/{uuid}")
-	public void deleteUser(@PathVariable final UUID userId) {
-		users.delete(userId);
+	@RequestMapping(method = DELETE, value = "/{uuid}", produces = APPLICATION_JSON_VALUE)
+	public void deleteUser(@PathVariable final String uuid) {
+		users.delete(uuid);
 	}
 
 }

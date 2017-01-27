@@ -10,6 +10,9 @@ Vue.use(VueMaterial)
 import * as VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+import * as VeeValidate from 'vee-validate';
+Vue.use(VeeValidate);
+
 var App = require('./App.vue').default
 
 /* eslint-disable no-new */

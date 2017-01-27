@@ -25,7 +25,7 @@ export class ${serviceName} {
   <#assign expandedURL = method.url?replace('{', '\' + ')>
   <#assign expandedURL = expandedURL?replace('}', ' + \'')>
   
-  public ${method.name}Get(<#list method.pathVariableTypes as variable>${variable.fieldName}: ${variable.type}<#sep>, </#sep></#list>): Promise<${method.returnType.type}> {
+  public ${method.name}(<#list method.pathVariableTypes as variable>${variable.fieldName}: ${variable.type}<#sep>, </#sep></#list>): Promise<${method.returnType.type}> {
     let url = this.serviceBaseURL + '${expandedURL}';
 
     return new Promise<${method.returnType.type}> (function (resolve, reject) {
@@ -44,14 +44,27 @@ export class ${serviceName} {
 <#list getPostMethods() as method>
   <#assign expandedURL = method.url?replace('{', '\' + ')>
   <#assign expandedURL = expandedURL?replace('}', ' + \'')>
-  public ${method.name}Post(<#list method.pathVariableTypes as variable>${variable.fieldName}: ${variable.type}<#sep>, </#sep></#list><#if method.pathVariableTypes?size gt 0>, </#if>${method.requestBodyType.fieldName}: ${method.requestBodyType.type}): Promise<${method.returnType.type}> {
+  public ${method.name}(<#list method.pathVariableTypes as variable>${variable.fieldName}: ${variable.type}<#sep>, </#sep></#list><#if method.pathVariableTypes?size gt 0>, </#if>${method.requestBodyType.fieldName}: ${method.requestBodyType.type}): Promise<${method.returnType.type}> {
     let url = this.serviceBaseURL + '${expandedURL}';
-    return axios.post(url, ${method.requestBodyType.fieldName}).then(function (response) {
+    return new Promise<${method.returnType.type}> (function (resolve, reject) {
+      axios.post(url, ${method.requestBodyType.fieldName}).then(function (response) {
         resolve(<${method.returnType.type}>response.data);
       })
       .catch(function (error) {
         reject(error);
       });
+    });
+  }
+
+</#list>
+
+  /* DELETE */
+<#list getDeleteMethods() as method>
+  <#assign expandedURL = method.url?replace('{', '\' + ')>
+  <#assign expandedURL = expandedURL?replace('}', ' + \'')>
+  public ${method.name}(<#list method.pathVariableTypes as variable>${variable.fieldName}: ${variable.type}<#sep>, </#sep></#list>): void {
+    let url = this.serviceBaseURL + '${expandedURL}';
+    axios.delete(url);
   }
 
 </#list>
@@ -89,18 +102,6 @@ export class ${serviceName} {
     let url = this.serviceBaseURL + '${expandedURL}';
     return axiosPatch(url, ${method.requestBodyType.fieldName})
       .map((response: Response) => <${method.returnType.type}>response.json())
-      .catch((error: Response) => this.handleError(error));
-  }
-
-</#list>
-
-  /* DELETE */
-<#list getDeleteMethods() as method>
-  <#assign expandedURL = method.url?replace('{', '\' + ')>
-  <#assign expandedURL = expandedURL?replace('}', ' + \'')>
-  public ${method.name}Delete(<#list method.pathVariableTypes as variable>${variable.fieldName}: ${variable.type}<#sep>, </#sep></#list>): Promise<Response> {
-    let url = this.serviceBaseURL + '${expandedURL}';
-    return axiosDelete(url)
       .catch((error: Response) => this.handleError(error));
   }
 
